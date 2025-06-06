@@ -1,18 +1,24 @@
 const TodoData = (props) => {
     // props là một biến Object
 
-    // const { name, age, address } = props;
-    const name = props.name;
-    const age = props.age;
-    const address = props.address;
+    const { todoList } = props;
+    // const name = props.name;
+    // const age = props.age;
+    // const address = props.address;
 
-    console.log(">>> Check pros: ", props)
+    console.log(">>> Check pros: ", todoList)
     return (
         // cach truyen bien props
         <div className='todo-data'>
-            <div>My name is {props.name}</div>
-            <div>Learning React</div>
-            <div>Watching Youtube</div>
+            {todoList.map((item, index) => {
+                console.log(">>> Check map:", item, index)
+                return (
+                    <div className="todo-item">
+                        <div>{item.name}</div>
+                        <button style={{ cursor: "pointer" }}>Delete</button>
+                    </div>)
+            })}
+
             <div>
                 {JSON.stringify(props.todoList)}
             </div>

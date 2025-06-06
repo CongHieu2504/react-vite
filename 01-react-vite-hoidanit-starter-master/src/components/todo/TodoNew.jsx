@@ -11,8 +11,8 @@ const TodoNew = (props) => {
     // addNewTodo("Hieu");
 
     const handleClick = () => {
-        // alert("Click me");
         addNewTodo(valueInput);
+        setValueInput(""); // reset input value
     }
 
     // Thêm sự kiện event.target.value: để lấy giá trị của input
@@ -25,7 +25,11 @@ const TodoNew = (props) => {
     return (
         <div className='todo-new'>
             {/* <input type="text" onChange={handleOnChange} /> */}
-            <input type="text" onChange={() => handleOnChange(event.target.value)} />
+            <input
+                type="text"
+                onChange={(event) => handleOnChange(event.target.value)}
+                value={valueInput}
+            />
             <button
                 style={{ cursor: "pointer" }}
                 onClick={handleClick}
