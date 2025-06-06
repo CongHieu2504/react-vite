@@ -34,12 +34,19 @@ const App = () => {
       <TodoNew
         addNewTodo={addNewTodo}
       />
-      <TodoData
-        todoList={todoList}
-      />
-      <div className='todo-image'>
-        <img src={ReactLogo} className='logo' />
-      </div>
+
+      {todoList.length > 0 &&
+        <TodoData
+          todoList={todoList}
+        />
+      }
+
+      {/* điều kiện nếu cái chiều dài nó rỗng thì nó sẽ render ra hình ảnh */}
+      {todoList.length === 0 &&
+        <div className='todo-image'>
+          <img src={ReactLogo} className='logo' />
+        </div>
+      }
     </div>
   )
 }
