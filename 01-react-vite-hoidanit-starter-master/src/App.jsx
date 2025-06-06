@@ -6,7 +6,7 @@ import { useState } from 'react'
 
 const App = () => {
 
-  const [todoList, settodoList] = useState([
+  const [todoList, setTodoList] = useState([
     { id: 1, name: "Learning React" },
     { id: 2, name: "Watching Youtube" }
   ])
@@ -19,10 +19,21 @@ const App = () => {
   }
 
   const addNewTodo = (name) => {
-    alert(`call me ${name}`)
+    const newTodo = {
+      id: randomIntFromInterval(1, 10000000), // random id from 3 to 1000
+      name: name
+    }
+
+    //array.push: gọi lại hàm setTodoList
+    setTodoList([...todoList, newTodo])
   }
 
   // addNewTodo("Cong hieu")
+
+  const randomIntFromInterval = (min, max) => { // min and max included 
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  }
+
 
   return (
     <div className="todo-container">

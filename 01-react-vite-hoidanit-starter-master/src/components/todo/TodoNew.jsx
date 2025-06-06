@@ -5,13 +5,14 @@ const TodoNew = (props) => {
     //useState hook 
     // const valueInput = "Cong Hieu";
     const [valueInput, setValueInput] = useState("Cong Hieu");
+
     const { addNewTodo } = props;
 
     // addNewTodo("Hieu");
 
     const handleClick = () => {
         // alert("Click me");
-        console.log(">>> check Value Input: ", valueInput);
+        addNewTodo(valueInput);
     }
 
     // Thêm sự kiện event.target.value: để lấy giá trị của input
