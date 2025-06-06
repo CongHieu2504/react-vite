@@ -1,17 +1,24 @@
+import { useState } from "react";
+
 const TodoNew = (props) => {
-    console.log(">>> Check point", props)
+
+    //useState hook 
+    // const valueInput = "Cong Hieu";
+    const [valueInput, setValueInput] = useState("Cong Hieu");
     const { addNewTodo } = props;
 
     // addNewTodo("Hieu");
 
     const handleClick = () => {
-        alert("Click me");
+        // alert("Click me");
+        console.log(">>> check Value Input: ", valueInput);
     }
 
     // Thêm sự kiện event.target.value: để lấy giá trị của input
     const handleOnChange = (name) => {
         // console.log(">>> handleOnchange", event.target.value);
-        console.log(">>> handleOnchange", name);
+        // console.log(">>> handleOnchange", name);
+        setValueInput(name);
     }
 
     return (
@@ -22,6 +29,10 @@ const TodoNew = (props) => {
                 style={{ cursor: "pointer" }}
                 onClick={handleClick}
             >Add</button>
+
+            <div>
+                My test input: {valueInput}
+            </div>
         </div>
     )
 }
