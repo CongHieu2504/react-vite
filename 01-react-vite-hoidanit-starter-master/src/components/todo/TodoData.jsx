@@ -1,7 +1,11 @@
 const TodoData = (props) => {
     // props là một biến Object
 
-    const { todoList } = props;
+    const handleClick = (id) => {
+        deleteTodo(id);
+    }
+
+    const { todoList, deleteTodo } = props;
     // const name = props.name;
     // const age = props.age;
     // const address = props.address;
@@ -15,7 +19,10 @@ const TodoData = (props) => {
                 return (
                     <div className={`todo-item`} key={item.id}>
                         <div>{item.name}</div>
-                        <button style={{ cursor: "pointer" }}>Delete</button>
+                        <button
+                            onClick={() => handleClick(item.id)}
+                            style={{ cursor: "pointer" }}
+                        >Delete</button>
                     </div>)
             })}
 

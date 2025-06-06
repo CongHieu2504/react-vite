@@ -11,6 +11,12 @@ const App = () => {
     // { id: 2, name: "Watching Youtube" }
   ])
 
+  const deleteTodo = (id) => {
+    // dùng filter để lọc ra những phần tử không có id trùng với id cần xóa
+    const newTodo = todoList.filter(item => item.id !== id);
+    setTodoList(newTodo);
+  }
+
   const addNewTodo = (name) => {
     const newTodo = {
       id: randomIntFromInterval(1, 10000000), // random id from 3 to 1000
@@ -38,6 +44,7 @@ const App = () => {
       {todoList.length > 0 &&
         <TodoData
           todoList={todoList}
+          deleteTodo={deleteTodo}
         />
       }
 
