@@ -22,6 +22,7 @@ li a:hover:not(.active) {
   background-color: #111;
 }
 
+/* làm nổi bật khi trỏ chuột chọn vào danh mục */
 .active {
   background-color: #04AA6D;
 }
