@@ -1,27 +1,54 @@
 import { Button, Input } from "antd";
+import { useState } from "react";
 
 const UserForm = () => {
+    const [fullName, setFullName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [phoneNumber, setPhoneNumber] = useState("");
+
+    // hàm onClick
+    const handleClickBtn = () => {
+        console.log(">>> handleClickBtn", { fullName, email, password, phoneNumber });
+    }
+
     return (
         <div className="user-form" style={{ margin: '20px 0px' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
                 <div>
                     <span>FullName</span>
-                    <Input />
+                    <Input
+                        value={fullName}
+                        onChange={(event) => setFullName(event.target.value)}
+                    />
                 </div>
                 <div>
                     <span>Email</span>
-                    <Input />
+                    <Input
+                        value={email}
+                        onChange={(event) => setEmail(event.target.value)}
+                    />
                 </div>
                 <div>
                     <span>Password</span>
-                    <Input.Password />
+                    <Input.Password
+                        value={password}
+                        onChange={(event) => setPassword(event.target.value)}
+                    />
                 </div>
                 <div>
                     <span>Phone number</span>
-                    <Input />
+                    <Input
+                        value={phoneNumber}
+                        onChange={(event) => setPhoneNumber(event.target.value)}
+                    />
                 </div>
                 <div>
-                    <Button type="primary">Create User</Button>
+                    <Button
+                        onClick={handleClickBtn}
+                        style={{ cursor: 'pointer' }}
+                        type="primary">Create User
+                    </Button>
                 </div>
             </div>
         </div>
