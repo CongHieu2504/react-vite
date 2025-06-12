@@ -1,6 +1,6 @@
-import { Space, Table, Tag } from 'antd';
+import { Table } from 'antd';
 import { fetchAllUserAPI } from '../../services/api.service';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const UserTable = () => {
 
@@ -8,6 +8,12 @@ const UserTable = () => {
         { _id: "hieu", fullName: 22, email: "HCM" },
         { _id: "bill", fullName: 22, email: "HCM" }
     ]);
+
+    //empty array => run once
+    useEffect(() => {
+        console.log(">>> run useEffect 111");
+        loadUser();
+    }, []);
 
     const columns = [
         {
@@ -24,38 +30,19 @@ const UserTable = () => {
         }
     ];
 
-    //     {
-    //         key: '1',
-    //         name: 'John Brown',
-    //         age: 32,
-    //         address: 'New York No. 1 Lake Park',
-    //         tags: ['nice', 'developer'],
-    //     },
-    //     {
-    //         key: '2',
-    //         name: 'Jim Green',
-    //         age: 42,
-    //         address: 'London No. 1 Lake Park',
-    //         tags: ['loser'],
-    //     },
-    //     {
-    //         key: '3',
-    //         name: 'Joe Black',
-    //         age: 32,
-    //         address: 'Sydney No. 1 Lake Park',
-    //         tags: ['cool', 'teacher'],
-    //     },
-    // ];
-
     const loadUser = async () => {
-        const res = await fetchAllUserAPI()
+        const res = await fetchAllUserAPI();
+        setDataUsers(res.data);
     }
 
-    loadUser();
-    console.log(">>> run render:");
+    console.log(">>> run render 000");
 
     return (
-        <Table columns={columns} dataSource={dataUsers} />
+        <Table
+            columns={columns}
+            dataSource={dataUsers}
+            rowKey={"_id"}
+        />
     )
 }
 
